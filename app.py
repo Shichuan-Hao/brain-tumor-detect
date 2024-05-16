@@ -35,6 +35,14 @@ def index():
 def test_predict():
     return render_template('test_predict.html')
 
+@app.route('/login')
+def route_login():
+    return render_template('login.html')
+
+@app.route('/register')
+def route_register():
+    return render_template('register.html')
+
 
 # ------------ API 接口 -------------
 @app.route('/check_login')
