@@ -1,105 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>脑部肿瘤在线检测 - 登录</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="static/assets/img/favicon.png" rel="icon">
-  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Vendor CSS Files -->
-  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="static/assets/css/style.css" rel="stylesheet">
-  <script src="static/js/jquery.min.js" type="text/javascript" charset='utf-8'></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>脑部肿瘤在线检测 - 登录</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="robots" content="all,follow">
+	<link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-4.2.1.css">
+	<link rel="stylesheet" href="static/css/style.default.css" id="theme-stylesheet">
 </head>
 
 <body>
+	<div class="page login-page">
+		<div class="container d-flex align-items-center">
+			<div class="form-holder has-shadow">
+				<div class="row">
+					<!-- Logo & Information Panel-->
+					<div class="col-lg-6">
+						<div class="info d-flex align-items-center">
+							<div class="content">
+								<div class="logo">
+									<h1>脑部肿瘤在线检测</h1>
+								</div>
+								<p>欢迎登录</p>
+							</div>
+						</div>
+					</div>
+					<!-- Form Panel    -->
+					<div class="col-lg-6 bg-white">
+						<div class="form d-flex align-items-center">
+							<div class="content">
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top"  style="background-color: #e9f0fd; padding: 8px 0;">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+								<div class="form-group">
+									<input id="register-name" class="input-material" type="text" name="loginName"
+										placeholder="请输入用户名">
+									<div class="invalid-feedback">
+										不能为空
+									</div>
+								</div>
 
-      <a href="/" class="logo d-flex align-items-center">
-        <img src="static/assets/img/logo.png" alt="">
-        <span>BTD</span>
-      </a>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#" style="font-size: 20px;">首页</a></li>
-          <li><a class="nav-link scrollto" href="/test_predict" style="font-size: 20px;">脑部肿瘤在线检测</a></li>
-          <!-- <li><a class="nav-link scrollto" href="/login" style="font-size: 20px;">登录</a></li> -->
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <section id="hero" class="hero align-items-center">
-    <div class="container">
-      <div class="text-center" data-aos="fade-up" style="padding-top: 100px;" id="login_register">
-        <label style="font-size: 18px; color: rgb(44, 44, 100);">用户名：</label>
-        <input type="text" id="name"
-               style="width: 150px; height: 40px; margin-right: 5px; border-radius: 10px; border: 0;"/>
-        <label style="font-size: 18px;color: rgb(44, 44, 100);">密&nbsp;&nbsp;&nbsp;码：</label>
-        <input id="password" type="password"
-               style="width: 150px; height: 40px; margin-right: 5px; border-radius: 10px; border: 0;">
-               
-        <button id="confirm" class="btn btn-info" style="width: 80px; margin-left: 10px; color: white;">
-            确认
-        </button>
-        <button id="cancel" class="btn btn-warning" style="width: 80px; margin-left: 5px; color: white;">
-            取消
-        </button>
-      </div>
-      <a class="nav-link scrollto" href="/register" style="font-size: 20px;">注册</a>
-    </div>
-  </section><!-- End Hero -->
+								<div class="form-group">
+									<input id="register-password" class="input-material" type="password"
+										name="registerPassword" placeholder="请输入密码">
+									<div class="invalid-feedback">
+										密码必须在6~10位之间
+									</div>
+								</div>
 
 
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Brain-Tumor-Detector</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
-        Designed by <a href="#">Shiang Hao</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+								<div class="form-group">
+									<button id="regbtn" type="button" name="registerSubmit"
+										class="btn btn-primary">登录</button>
+								</div>
 
-  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
+								<small>没有账号?</small><a href="/register" class="signup">&nbsp;注册</a>
+							</div>
 
-  <!-- Vendor JS Files -->
-  <script src="static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="static/assets/vendor/aos/aos.js"></script>
-  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- JavaScript files-->
+	<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+	<script src="https://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="static/assets/js/main.js"></script>
+	<script>
+		$(function () {
 
+			/*错误class  form-control is-invalid
+			正确class  form-control is-valid*/
+
+			var flagName = false;
+			var flagPass = false;
+
+			/*验证用户名*/
+			var name, passWord;
+
+			console.log(name);
+        	console.log(passWord);
+
+			$("#register-name").change(function () {
+				name = $("#register-name").val();
+				if ((name === undefined) || (name === '')) {
+					$("#register-name").removeClass("form-control is-valid")
+					$("#register-name").addClass("form-control is-invalid");
+					flagEmail = false;
+				} else {
+					$("#register-name").removeClass("form-control is-invalid")
+					$("#register-name").addClass("form-control is-valid");
+					flagEmail = true;
+				}
+			})
+
+			/*验证密码*/
+			$("#register-password").change(function () {
+				passWord = $("#register-password").val();
+				if (passWord.length < 6 || passWord.length > 18) {
+					$("#register-password").removeClass("form-control is-valid")
+					$("#register-password").addClass("form-control is-invalid");
+					flagPas = false;
+				} else {
+					$("#register-password").removeClass("form-control is-invalid")
+					$("#register-password").addClass("form-control is-valid");
+					flagPas = true;
+				}
+			})
+
+			$("#regbtn").click(function () {
+				if (flagPas && flagEmail) {
+					localStorage.setItem("passWord", passWord);
+					localStorage.setItem("name", name);
+
+					const url = "http://127.0.0.1:5000/login";
+					const data = {
+						"name": name,
+						"password": passWord,
+					}
+					$.post(url, data, function (data, status) {
+						alert(data['info'])
+						if (data['status'] == 'ok') {
+							window.location.href = "/"
+						}
+					})
+				} else {
+
+					if (!flagEmail) {
+						$("#register-email").addClass("form-control is-invalid");
+					}
+
+					if (!flagPas) {
+						$("#register-password").addClass("form-control is-invalid");
+					}
+				}
+			})
+		})
+	</script>
 </body>
 
 </html>

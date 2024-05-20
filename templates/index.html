@@ -24,69 +24,7 @@
   <!-- Template Main CSS File -->
   <link href="static/assets/css/style.css" rel="stylesheet">
   <script src="static/js/jquery.min.js" type="text/javascript" charset='utf-8'></script>
-
-  <script type="text/javascript">
-    $(function () {
-        // 判断是否登录
-        $.get('http://127.0.0.1:5000/check_login', {},
-            function (data) {
-                console.log(data);
-                if (data['login'] === false) {
-                    $('#show_login_reg').show();
-                    $('#index_img').css('height', '71%');
-                } else {
-                    $('#login_register').hide();
-                    $('#info_box').attr('class', 'col-lg-12');
-                    $('#info_box').css('font-size', '20px');
-                }
-            }
-        );
-
-        $("#reg_submit").click(function () {
-            const name = $("#name").val();
-            const password = $("#password").val();
-
-            console.log(name);
-            console.log(password);
-
-            if ((name === undefined) || (password === undefined) || (name === '') || (password === '')) {
-                alert('字段不能为空！');
-                return
-            }
-
-            // 获取时间
-            $.get('http://127.0.0.1:5000/register/' + name + '/' + password, {},
-                function (data) {
-                    alert(data['info'])
-                }
-            );
-        });
-
-        $("#login_submit").click(function () {
-            const name = $("#name").val();
-            const password = $("#password").val();
-
-            console.log(name);
-            console.log(password);
-
-            if ((name === undefined) || (password === undefined) || (name === '') || (password === '')) {
-                alert('login_submit字段不能为空！');
-                return
-            }
-
-            $.get('http://127.0.0.1:5000/login/' + name + '/' + password, {},
-                function (data) {
-                    alert(data['info']);
-                    if (data['status'] == 'ok') {
-                        window.location.href = "/"
-
-                    }
-                }
-            );
-
-        });
-    });
-</script>
+  <script src="static/js/index.js" type="text/javascript" charset='utf-8'></script>
 </head>
 
 <body>
@@ -96,14 +34,14 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
-        <img src="static/assets/img/logo.png" alt="">
-        <span>BTD</span>
+        <img src="static/assets/img/logo-removebg-preview.png" alt="BTD's logo">
+        <span>脑部肿瘤在线检测</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#" style="font-size: 20px;">首页</a></li>
-          <li><a class="nav-link scrollto" href="/test_predict" style="font-size: 20px;">脑部肿瘤在线检测</a></li>
+          <li><a class="nav-link scrollto" href="/test_predict" style="font-size: 20px;">在线检测</a></li>
           <li><a class="nav-link scrollto" href="/login" style="font-size: 20px;">登录</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -135,20 +73,7 @@
           <img src="static/assets/img/index.png" class="img-fluid" style="width: 90%;">
         </div>
       </div>
-      <!-- <div class="text-center" data-aos="fade-up" style="padding-top: 100px;" id="login_register">
-        <label style="font-size: 18px; color: rgb(44, 44, 100);">用户名：</label>
-        <input type="text" id="name"
-               style="width: 150px; height: 40px; margin-right: 5px; border-radius: 10px; border: 0;"/>
-        <label style="font-size: 18px;color: rgb(44, 44, 100);">密&nbsp;&nbsp;&nbsp;码：</label>
-        <input id="password" type="password"
-               style="width: 150px; height: 40px; margin-right: 5px; border-radius: 10px; border: 0;">
-        <button id="reg_submit" class="btn btn-info" style="width: 80px; margin-left: 10px; color: white;">
-            注册
-        </button>
-        <button id="login_submit" class="btn btn-success" style="width: 80px; margin-left: 5px; color: white;">
-            登录
-        </button>
-      </div> -->
+    
     </div>
 
   </section><!-- End Hero -->

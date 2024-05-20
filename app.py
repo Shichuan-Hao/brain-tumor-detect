@@ -2,11 +2,13 @@
 # coding=utf-8
 import cv2
 import sqlite3
+import hashlib
 from flask import Flask, render_template, jsonify, request
 from tensorflow.keras.models import load_model, Model
 import tensorflow as tf
 from PIL import Image
 import numpy as np
+from module.snowflake import Snowflake
 
 gpus = tf.config.list_physical_devices("GPU")
 
@@ -30,7 +32,6 @@ login_name = None
 def index():
     return render_template('index.html')
 
-
 @app.route('/test_predict')
 def test_predict():
     return render_template('test_predict.html')
@@ -51,7 +52,8 @@ def check_login():
     return jsonify({'username': login_name, 'login': login_name is not None})
 
 
-@app.route('/register/<name>/<password>')
+## name, idNo, email, age, sex, password
+@app.route('/register')
 def register(name, password):
     conn = sqlite3.connect('user_info.db')
     cursor = conn.cursor()
@@ -64,48 +66,75 @@ def register(name, password):
         # 创建数据库表
         sql = """
                 CREATE TABLE user(
+                    id CHAR(256) NOT NULL,
                     name CHAR(256),
-                    password CHAR(256)
+                    idNo CHAR(256),
+                    email CHAR(256),
+                    age CHAR(256),
+                    sex CHAR(256),
+                    password CHAR(256),
+                    image CHAR(256),
+                    result CHAR(256),
+                    PRIMARY KEY ("id")
                 );
                 """
         cursor.execute(sql)
         conn.commit()
         print('创建数据库表成功！')
 
-    sql = "INSERT INTO user (name, password) VALUES (?,?);"
-    cursor.executemany(sql, [(name, password)])
+    sql = "INSERT INTO user (id, name, idNo, email, age, sex, password) VALUES (?,?,?,?,?,?,?);"
+
+    id = Snowflake(1,1).next_id()
+    name = request.form.get('name')
+    idNo = request.form.get('idNo')
+    email = request.form.get('email')
+    age = request.form.get('age')
+    sex = request.form.get('sex')
+    password = request.form.get('password')
+    passwordMd5 = hashlib.md5(password.encode(encoding='UTF-8')).hexdigest()
+
+    cursor.executemany(sql, [(id, name, idNo, email, age, sex, passwordMd5)])
     conn.commit()
     return jsonify({'info': '用户注册成功！', 'status': 'ok'})
 
 
-@app.route('/login/<name>/<password>')
-def login(name, password):
+@app.route('/login', methods=['POST'])
+def login():
     global login_name
     conn = sqlite3.connect('user_info.db')
     cursor = conn.cursor()
 
-    check_sql = "SELECT * FROM sqlite_master where type='table' and name='user'"
-    cursor.execute(check_sql)
-    results = cursor.fetchall()
+    # check_sql = "SELECT * FROM sqlite_master where type='table' and name='user'"
+    # cursor.execute(check_sql)
+    # results = cursor.fetchall()
     # 数据库表不存在
-    if len(results) == 0:
-        # 创建数据库表
-        sql = """
-                CREATE TABLE user(
-                    name CHAR(256),
-                    password CHAR(256)
-                );
-                """
-        cursor.execute(sql)
-        conn.commit()
-        print('创建数据库表成功！')
+    # if len(results) == 0:
+        # # 创建数据库表
+        # sql = """
+        #         CREATE TABLE user(
+        #             name CHAR(256),
+        #             idNo CHAR(256),
+        #             email CHAR(256),
+        #             age CHAR(256),
+        #             sex CHAR(256),
+        #             password CHAR(256)
+        #         );
+        #         """
+        # cursor.execute(sql)
+        # conn.commit()
+        # print('创建数据库表成功！')
+    name = request.form.get('name')
+    password = request.form.get('password')
 
-    sql = "select * from user where name='{}' and password='{}'".format(name, password)
+    passwordMd5 = hashlib.md5(password.encode(encoding='UTF-8')).hexdigest()
+
+    sql = "select * from user where name='{}' and password='{}'".format(name, passwordMd5)
     cursor.execute(sql)
     results = cursor.fetchall()
 
     login_name = name
     if len(results) > 0:
+        # return jsonify({'info': '登录成功！', 'status': 'ok'})
         return jsonify({'info': name + '用户登录成功！', 'status': 'ok'})
     else:
         return jsonify({'info': '当前用户不存在！', 'status': 'error'})

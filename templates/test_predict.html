@@ -32,7 +32,7 @@
         function (data) {
           console.log(data);
           if (data['login'] === false) {
-            window.location = '/'
+            window.location.href = "/login"
           }
         }
       );
@@ -84,14 +84,14 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
-        <img src="static/assets/img/logo.png" alt="">
-        <span>Brain-Tumor-Detector</span>
+        <img src="static/assets/img/logo-removebg-preview.png" alt="BTD's logo">
+        <span>脑部肿瘤在线检测</span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="/" style="font-size: 20px;">首页</a></li>
-          <li><a class="nav-link scrollto active" href="#" style="font-size: 20px;">脑部肿瘤在线检测</a></li>
+          <!-- <li><a class="nav-link scrollto " href="/" style="font-size: 20px;">首页</a></li> -->
+          <!-- <li><a class="nav-link scrollto active" href="#" style="font-size: 20px;">脑部肿瘤在线检测</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -108,7 +108,9 @@
           <div class="form-group">
             <div class="input-group">
               <span style="font-size: 20px; margin-right: 10px;">上传待测试影像:</span>
+
               <input id='location' class="form-control" onclick="$('#i-file').click();">
+              
               <label class="input-group-btn" style="width: 200px;">
                 <input type="button" id="i-check" value="浏览文件" class="btn btn-primary" onclick="$('#i-file').click();">
               </label>
@@ -124,10 +126,11 @@
 
               <input type="submit" value="提交预测" class="btn btn-success" id="submit" />
             </div>
-            <input type="file" name="file" id='i-file' accept=".png, .jpg"
-              onchange="$('#location').val($('#i-file').val());" style="display: none">
+            
+            <input type="file" name="file" id='i-file' accept=".png, .jpg" onchange="$('#location').val($('#i-file').val());" style="display: none">
           </div>
         </div>
+
         <div class="row" style="margin-top: 30px;">
           <div class="col-lg-2"></div>
           <div class="col-lg-8">
