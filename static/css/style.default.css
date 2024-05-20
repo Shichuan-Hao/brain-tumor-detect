@@ -95,7 +95,7 @@ table {
 }
 
 .card-close .dropdown-menu a:hover {
-  background: #796AEE;
+  background: #012970;
   color: #fff !important;
 }
 
@@ -1937,7 +1937,10 @@ input.input-material.is-invalid ~ label {
 }
 
 .login-page .form-holder .info {
-  background: rgba(121, 106, 238, 0.9);
+  /* background: rgba(46, 26, 196, 0.9); */
+  /* background: rgba(1, 41, 112, 0.8); */
+  background: rgba(1, 41, 112, 0.8);
+  /* background: rgba(233, 240, 253, 0.8); */
   color: #fff;
 }
 
@@ -2171,14 +2174,20 @@ STYLE SWITCHER FOR DEMO
 
 .btn-primary {
   color: color-yiq(#796AEE);
-  background-color: #796AEE;
-  border-color: #796AEE;
+  /* background-color: #796AEE; */
+  background-color: rgba(1, 41, 112, 0.8);
+  /* border-color: #796AEE; */
+  border-color: rgba(1, 41, 112, 0.8);
 }
 
 .btn-primary:hover {
   color: color-yiq(#5a48ea);
   background-color: #5a48ea;
   border-color: #503ce9;
+  
+  /* color: rgba(1, 41, 112, 0.8);
+  background-color: rgba(233, 240, 253, 0.8);
+  border-color: rgba(233, 240, 253, 0.8); */
 }
 
 .btn-primary:focus, .btn-primary.focus {

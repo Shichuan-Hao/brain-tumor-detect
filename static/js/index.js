@@ -7,7 +7,7 @@ $(function () {
                 // $('#show_login_reg').show();
                 // $('#index_img').css('height', '71%');
             } else {
-                // $('#login_register').hide();
+                $('#nav-login').hide();
                 // $('#info_box').attr('class', 'col-lg-12');
                 // $('#info_box').css('font-size', '20px');
             }
