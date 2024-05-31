@@ -71,33 +71,11 @@
 
 	<script>
 		$(function () {
-
-
-			// $.get('http://127.0.0.1:5000/check_login', {},
-			// 	function (data) {
-			// 		console.log(data);
-			// 		if (data['login'] === false) {
-			// 			// $('#show_login_reg').show();
-			// 			// $('#index_img').css('height', '71%');
-			// 		} else {
-			// 			// $('#nav-login').hide();
-			// 			// $('#info_box').attr('class', 'col-lg-12');
-			// 			// $('#info_box').css('font-size', '20px');
-			// 			window.location.href = "/"
-			// 		}
-			// 	}
-			// );
-			/*错误class  form-control is-invalid
-			正确class  form-control is-valid*/
-
 			var flagName = false;
 			var flagPass = false;
 
 			/*验证用户名*/
 			var name, passWord;
-
-			console.log(name);
-        	console.log(passWord);
 
 			$("#register-name").change(function () {
 				name = $("#register-name").val();

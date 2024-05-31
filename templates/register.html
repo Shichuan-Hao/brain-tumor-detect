@@ -179,7 +179,7 @@
 				// 年龄 1 ~ 120 之间有效
 				// 18位前17位为数字，最后一位是校验位，可能为数字或字符X。
 				var ageRegex = /^(?:[1-9][0-9]?|1[01][0-9]|120)/;
-				if (!ageRegex.test(email)) {
+				if (!ageRegex.test(age)) {
 					$("#register-age").removeClass("form-control is-valid")
 					$("#register-age").addClass("form-control is-invalid");
 					flagAge = false;
@@ -258,7 +258,7 @@
 						"sex": sex     
 					}
 					$.post(url, data, function(data, status) {
-						alert(data['info'])
+						// alert(data['info'])
 						if(data['status'] == 'ok') {
 							window.location.href = "/login"
 					    } else {

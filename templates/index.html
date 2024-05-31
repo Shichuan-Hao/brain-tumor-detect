@@ -23,14 +23,13 @@
 
   <!-- Template Main CSS File -->
   <link href="static/assets/css/style.css" rel="stylesheet">
-  <script src="static/js/jquery.min.js" type="text/javascript" charset='utf-8'></script>
-  <script src="static/js/index.js" type="text/javascript" charset='utf-8'></script>
+
 </head>
 
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top"  style="background-color: #e9f0fd; padding: 8px 0;">
+  <header id="header" class="header fixed-top" style="background-color: #e9f0fd; padding: 8px 0;">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
@@ -41,8 +40,11 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#" style="font-size: 20px;">首页</a></li>
-          <li><a class="nav-link scrollto" href="/test_predict" style="font-size: 20px;">在线检测</a></li>
+          <li><a id="nav-online-check" class="nav-link scrollto" href="/test_predict" style="font-size: 20px;">在线检测</a></li>
+          <li id="nav-user-info"><a class="nav-link scrollto" href="/mine" style="font-size: 20px;">我的</a></li>
           <li id="nav-login"><a class="nav-link scrollto" href="/login" style="font-size: 20px;">登录</a></li>
+          <li id="nav-logout"><a class="nav-link scrollto" href="/" style="font-size: 20px;">退出</a></li>
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -60,9 +62,10 @@
           <span data-aos="fade-up">脑部肿瘤在线检测（Brain tumor detect，BTD）</span>
           <!-- <h2 data-aos="fade-up" data-aos-delay="400">    1      </h2> -->
           <div data-aos="fade-up" data-aos-delay="600">
-            
+
             <div class="text-center text-lg-start">
-              <a href="/test_predict" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a id="body-online-check" href="/test_predict"
+                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>在线检测</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -73,7 +76,7 @@
           <img src="static/assets/img/index.png" class="img-fluid" style="width: 90%;">
         </div>
       </div>
-    
+
     </div>
 
   </section><!-- End Hero -->
@@ -94,10 +97,12 @@
               </p>
               <h2>Inception 卷积神经网络</h2>
               <p>
-                深度神经网络(Deep Neural Networks, DNN)或深度卷积网络中的Inception模块是由Google的Christian Szegedy等人提出，包括Inception-v1、Inception-v2、Inception-v3、Inception-v4及Inception-ResNet系列。
+                深度神经网络(Deep Neural Networks, DNN)或深度卷积网络中的Inception模块是由Google的Christian
+                Szegedy等人提出，包括Inception-v1、Inception-v2、Inception-v3、Inception-v4及Inception-ResNet系列。
               </p>
               <div class="text-center text-lg-start">
-                <a href="/test_predict" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                <a id="body-online-check" href="/test_predict"
+                  class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>在线检测</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -114,7 +119,7 @@
 
     </section><!-- End About Section -->
 
-    
+
   </main><!-- End #main -->
   <footer id="footer" class="footer">
     <div class="container">
@@ -131,7 +136,8 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -145,6 +151,12 @@
   <!-- Template Main JS File -->
   <script src="static/assets/js/main.js"></script>
 
+  <script src="static/js/jquery.min.js" type="text/javascript" charset='utf-8'></script>
+  <script src="static/js/index.js" type="text/javascript" charset='utf-8'></script>
+
+  <script type="text/javascript">
+
+  </script>
 </body>
 
 </html>

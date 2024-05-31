@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>脑部肿瘤在线检测 - 我的</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top" style="background-color: #e9f0fd; padding: 8px 0;">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="static/assets/img/logo-removebg-preview.png" alt="BTD's logo">
+        <span>脑部肿瘤在线检测</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="#" style="font-size: 20px;">首页</a></li>
+          <li><a id="nav-online-check" class="nav-link scrollto" href="/test_predict" style="font-size: 20px;">在线检测</a>
+          </li>
+          <li id="nav-user-info"><a class="nav-link scrollto active" href="/mine" style="font-size: 20px;">我的</a></li>
+          <li id="nav-logout"><a class="nav-link scrollto" href="/" style="font-size: 20px;">退出</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle" aria-label="Toggle navigation"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+
+          <h1 style="margin-bottom: 20px;"><i class="bi bi-distribute-vertical"></i> 个人信息</h1>
+          <p><strong>姓名:</strong> <span id="name"></span></p>
+          <p><strong>性别:</strong> <span id="sex"></span></p>
+          <p><strong>年龄:</strong> <span id="age"></span></p>
+          <p><strong>联系邮箱:</strong> <span id="email"></span></p>
+          <p><strong>身份证号:</strong> <span id="id_no"></span></p>
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a id="checked-records"
+                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
+                role="button">
+                <span>检测记录</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <div id="table-container"></div>
+          <div id="pagination-container"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Brain-Tumor-Detector</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="#">Shiang Hao</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center" aria-label="Back to top"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+
+  <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    function previewImage(img) {
+      // 创建一个包含图片的容器
+      var container = document.createElement("div");
+      container.style.position = "fixed";
+      container.style.zIndex = "1";
+      container.style.left = "0";
+      container.style.top = "0";
+      container.style.width = "100%";
+      container.style.height = "100%";
+      container.style.display = "flex";
+      container.style.alignItems = "center";
+      container.style.justifyContent = "center";
+      container.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+
+      // 创建一个新的图像元素
+      var modalImg = document.createElement("img");
+      // 设置其源为点击的图片源
+      modalImg.src = img.src;
+      // 设置其样式
+      modalImg.style.maxWidth = "90%";
+      modalImg.style.maxHeight = "90%";
+      modalImg.style.display = "block";
+
+
+      // 添加图像和关闭按钮到容器中
+      container.appendChild(modalImg);
+
+
+      // 将容器添加到页面中
+      document.body.appendChild(container);
+    }
+
+    $(function () {
+
+      // 判断是否登录
+      $.get('/check_login', {}, function (data) {
+        if (data.login === false) {
+          window.location.href = "/login";
+        }
+      }).fail(function () {
+        console.error("Error checking login status.");
+      });
+
+      // 获取用户信息
+      $.get('/user_info', {}, function (data) {
+        $('#name').text(data.name);
+        $('#id_no').text(data.id_no);
+        $('#email').text(data.email);
+        $('#age').text(data.age);
+        $('#sex').text(data.sex === "M" ? '男' : '女');
+      }).fail(function () {
+        console.error("Error fetching user information.");
+      });
+
+      // 处理检测记录按钮点击事件
+      $('#checked-records').click(function () {
+        loadPageData(1); // Load first page data initially
+      });
+
+      // Function to load data for a specific page
+      function loadPageData(page) {
+        const page_size = 3;
+        const url = "/predict_result_paged";
+        const data = {
+          "page": page,
+          "page_size": page_size
+        };
+        $.post(url, data, function (response, status) {
+          if (response['status'] === 'ok') {
+            // 渲染数据表格
+            renderTable(response['result']['items']);
+            // 渲染分页
+            renderPagination(response['result']);
+          } else {
+            // 处理失败情况
+            $('#pagination-container').html('<p style="color:red">错误提示: 未找到数据。</p>');
+          }
+        }).fail(function () {
+          // 处理请求失败情况
+          $('#pagination-container').html('<p style="color:red">错误提示: 获取数据失败。</p>');
+        });
+      }
+
+      // 处理分页按钮点击事件
+      $(document).on('click', '.page-link', function (e) {
+        e.preventDefault();
+        const page = $(this).text();
+        loadPageData(page);
+      });
+
+      // 渲染数据表格
+      function renderTable(items) {
+        const tableContainer = $('#table-container');
+        tableContainer.empty(); // 清空表格容器
+        if (items.length > 0) {
+          // 创建表格元素
+          const table = $('<table class="table"></table>');
+          // 创建表头
+          const tableHeader = $('<thead><tr><th>文件地址</th><th>预测结果</th><th>创建时间</th></tr></thead>');
+          table.append(tableHeader);
+          // 创建表格主体
+          const tableBody = $('<tbody></tbody>');
+          items.forEach(function (item) {
+            const row = $('<tr></tr>');
+            row.append(`<td><img src="${item.file_address}" width="100" height="100" onclick="previewImage(this)" style="cursor: pointer;"></td>`);
+            // 添加预测结果单元格
+            const predictionCell = $('<td></td>');
+            if (item.predict_result === "无肿瘤") {
+              // predictionCell.addClass("green-text");
+              predictionCell.css("color", "green");
+            } else {
+              // predictionCell.addClass("red-text");
+              predictionCell.css("color", "red");
+              predictionCell.css("font-weight", "bold");
+            }
+            predictionCell.text(item.predict_result);
+            row.append(predictionCell);
+            row.append(`<td>${item.create_time}</td>`);
+            tableBody.append(row);
+          });
+          table.append(tableBody);
+          // 将表格添加到容器中
+          tableContainer.append(table);
+        } else {
+          // 如果没有记录，显示错误信息
+          tableContainer.html('<p class="error-message">错误提示: 未找到数据。</p>');
+        }
+      }
+
+      // 渲染分页列表
+      function renderPagination(result) {
+        const pagination = result;
+        if (pagination.total_pages > 0) {
+          // 构建分页列表的 HTML，并插入到指定容器中
+          let paginationHTML = '<ul class="pagination">';
+          for (let i = 1; i <= pagination.total_pages; i++) {
+            paginationHTML += `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`;
+          }
+          paginationHTML += '</ul>';
+          $('#pagination-container').html(paginationHTML);
+        } else {
+          // 如果没有记录，显示错误信息
+          $('#pagination-container').html('<p class="error-message">错误提示: 未找到数据。</p>');
+        }
+      }
+
+    });
+
+
+  </script>
+</body>
+
+</html>

@@ -23,58 +23,6 @@
 
   <!-- Template Main CSS File -->
   <link href="static/assets/css/style.css" rel="stylesheet">
-  <script src="static/js/jquery.min.js" type="text/javascript" charset='utf-8'></script>
-
-  <script type="text/javascript">
-    $(function () {
-      // 判断是否登录
-      $.get('http://127.0.0.1:5000/check_login', {},
-        function (data) {
-          console.log(data);
-          if (data['login'] === false) {
-            window.location.href = "/login"
-          }
-        }
-      );
-
-      $('#submit').click(function () {
-        var formData = new FormData();
-        formData.append("file", $('#i-file')[0].files[0]);
-        
-        var model_type = $("#model_type").val();
-        formData.append("model_type", model_type);
-
-        $.ajax({
-          url: 'http://127.0.0.1:5000/submit_and_predict',
-          dataType: 'json',
-          type: 'POST',
-          async: false,
-          data: formData,
-          processData: false, // 使数据不做处理
-          contentType: false, // 不要设置Content-Type请求头
-          success: function (data) {
-            console.log('success....')
-            console.log(data)
-            $('#upload_test_image').attr("src", "http://127.0.0.1:5000/" + data['upload_image'])
-            $('#predict_class').text("预测是否包含肿瘤：" + data['predict'])
-            
-            if(data['predict'] === "无肿瘤") {
-              $('#predict_class').css("color", "Green");
-            } else {
-              $('#predict_class').css("color", "red");
-            }
-            
-            color: red; 
-          },
-          error: function (response) {
-            console.log('error....')
-            console.log(response);
-          }
-        });
-
-      });
-    });
-  </script>
 </head>
 
 <body>
@@ -90,7 +38,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <!-- <li><a class="nav-link scrollto " href="/" style="font-size: 20px;">首页</a></li> -->
+          <li><a class="nav-link scrollto " href="/" style="font-size: 20px;">首页</a></li>
+          <li id="user-info"><a class="nav-link scrollto" href="/mine" style="font-size: 20px;">我的</a></li>
+          <li id="nav-logout"><a class="nav-link scrollto" href="/" style="font-size: 20px;">退出</a></li>
           <!-- <li><a class="nav-link scrollto active" href="#" style="font-size: 20px;">脑部肿瘤在线检测</a></li> -->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -173,6 +123,69 @@
   <!-- Template Main JS File -->
   <script src="static/assets/js/main.js"></script>
 
+    <script src="static/js/jquery.min.js" type="text/javascript" charset='utf-8'></script>
+
+  <script type="text/javascript">
+    $(function () {
+      // 判断是否登录
+      $.get('http://127.0.0.1:5000/check_login', {},
+        function (data) {
+          console.log(data);
+          if (data['login'] === false) {
+            window.location.href = "/login"
+          }
+        }
+      );
+
+      $('#submit').click(function () {
+        var formData = new FormData();
+        formData.append("file", $('#i-file')[0].files[0]);
+        
+        var model_type = $("#model_type").val();
+        formData.append("model_type", model_type);
+
+        $.ajax({
+          url: 'http://127.0.0.1:5000/submit_and_predict',
+          dataType: 'json',
+          type: 'POST',
+          async: false,
+          data: formData,
+          processData: false, // 使数据不做处理
+          contentType: false, // 不要设置Content-Type请求头
+          success: function (data) {
+            // console.log('success....')
+            // console.log(data)
+            $('#upload_test_image').attr("src", "http://127.0.0.1:5000/" + data['upload_image'])
+            $('#predict_class').text("预测是否包含肿瘤：" + data['predict'])
+            
+            if(data['predict'] === "无肿瘤") {
+              $('#predict_class').css("color", "Green");
+            } else {
+              $('#predict_class').css("color", "red");
+            }
+            color: red; 
+          },
+          error: function (response) {
+            console.log('error....')
+            console.log(response);
+          }
+        });
+
+      });
+
+      $('#nav-logout').click(function () {
+        // 判断是否登录
+        $.get('http://127.0.0.1:5000/logout', {},
+            function (data) {
+                console.log(data['login'])
+                if (data['login'] === false) {
+                    window.location.href = "/"
+                }
+            }
+        );
+    })
+    });
+  </script>
 </body>
 
 </html>
